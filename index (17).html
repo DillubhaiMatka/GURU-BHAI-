@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Guru Bhai Satta King</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0e17;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 16px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* Logo */
+    .logo-wrapper {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .logo-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid #f5c518;
+      box-shadow: 0 0 20px rgba(245, 197, 24, 0.45), 0 0 40px rgba(245, 197, 24, 0.2);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .verified {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 28px;
+      height: 28px;
+      background: #1da1f2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #0a0e17;
+    }
+
+    .verified svg {
+      width: 14px;
+      height: 14px;
+      fill: #fff;
+    }
+
+    /* Heading */
+    .heading {
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-top: 6px;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    /* Subscriber pills */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .pill-blue {
+      background: #0d2b4a;
+      color: #3b9eff;
+      border: 1px solid rgba(59, 158, 255, 0.3);
+    }
+
+    .pill-blue .dot {
+      width: 8px;
+      height: 8px;
+      background: #3b9eff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #3b9eff;
+    }
+
+    .pill-orange {
+      background: #2a1f0a;
+      color: #f5a623;
+      border: 1px solid rgba(245, 166, 35, 0.35);
+    }
+
+    .pill-orange .flame {
+      font-size: 16px;
+    }
+
+    /* Features card */
+    .features {
+      width: 100%;
+      background: #121826;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #e8e8e8;
+    }
+
+    .feature-item .icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* Join button */
+    .join-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #0095ff, #00b2ff);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 16px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 149, 255, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 149, 255, 0.5);
+    }
+
+    .join-btn:active {
+      transform: translateY(0);
+    }
+
+    .join-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      width: 100%;
+      background: #1a1215;
+      border: 1px solid rgba(255, 60, 60, 0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .disclaimer-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ff3c3c;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .disclaimer-title .warn {
+      font-size: 16px;
+    }
+
+    .disclaimer p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #b0b0b0;
+      font-weight: 400;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f5c518;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .footer .lock {
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <div class="logo-circle">
+        <img src="https://raw.githubusercontent.com/DillubhaiMatka/GURU-BHAI-/refs/heads/main/IMG-20261012-WA0064.jpg" alt="Guru Bhai Satta King">
+      </div>
+      <div class="verified">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="heading">𝙂𝙐𝙍𝙐 𝘽𝙃𝘼𝙄 𝙎𝘼𝙏𝙏𝘼 𝙆𝙄𝙉𝙂</h1>
+
+    <!-- Subscriber count -->
+    <div class="pill pill-blue">
+      <span class="dot"></span>
+      200,000 subscribers
+    </div>
+
+    <!-- Live joiners -->
+    <div class="pill pill-orange">
+      <span class="flame">🔥</span>
+      18,432 logon ne abhi join kiya
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature-item">
+        <span class="icon">🔥</span>
+        <span>फरीदाबाद से दिसावर</span>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🎯</span>
+        <span>रोजाना 4 में से 3 लोकेशन पास</span>
+      </div>
+      <div class="feature-item">
+        <span class="icon">⭐</span>
+        <span>महीने में 26/27 दिन पासिंग का वादा</span>
+      </div>
+    </div>
+
+    <!-- Join Button -->
+    <a href="https://t.me/+xGVqLSKhk9AyMWZl" class="join-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+      JOIN TELEGRAM CHANNEL
+    </a>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <div class="disclaimer-title">
+        <span class="warn">⚠️</span>
+        Disclaimer
+      </div>
+      <p>All content shared on this channel is purely for educational and informational purposes. Trading in stocks and derivatives involves risk. Please consult a SEBI-registered financial advisor before making investment decisions.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span class="lock">🔒</span>
+      100% Free & Secure Channel Access
+    </div>
+
+  </div>
+</body>
+</html>
