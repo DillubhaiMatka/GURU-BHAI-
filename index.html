@@ -1,92 +1,139 @@
-from pathlib import Path
-import zipfile
-
-folder = Path("/mnt/data/Guru_Bhai_Same_To_Same_Code")
-folder.mkdir(exist_ok=True)
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#041b29">
-<title>𝙂𝙐𝙍𝙐 𝘽𝙃𝘼𝙄 𝙎𝘼𝙏𝙏𝘼 𝙆𝙄𝙉𝙂</title>
-<style>
-*{box-sizing:border-box}
-:root{--bg:#041b29;--panel:#06283b;--cyan:#06bafa;--gold:#ff9d00;--pink:#ff2855}
-body{margin:0;background:var(--bg);color:#f6f8ff;font-family:Arial,Helvetica,sans-serif}
-.page{width:100%;max-width:850px;min-height:100vh;margin:auto;padding:78px 5.5% 48px;text-align:center;background:radial-gradient(ellipse at 50% 13%,rgba(0,135,183,.16),transparent 40%),linear-gradient(150deg,#061b28,#031a29);overflow:hidden}
-.logo-wrap{width:270px;height:270px;max-width:66vw;max-height:66vw;position:relative;margin:0 auto 48px;display:grid;place-items:center}
-.logo-ring{position:absolute;inset:0;border:8px solid #ffd94f;border-radius:50%;box-shadow:0 0 10px #ffd24a,0 0 34px rgba(255,188,24,.45),inset 0 0 12px rgba(255,205,58,.2)}
-.logo{width:calc(100% - 16px);height:calc(100% - 16px);object-fit:cover;border-radius:50%;background:#07131c}
-.verified{position:absolute;right:0;bottom:12px;width:59px;height:59px;border-radius:50%;border:5px solid #041b29;background:#08b9f5;color:white;font-size:31px;font-weight:bold;display:grid;place-items:center;box-shadow:0 0 14px #04b8f4}
-h1{font-size:clamp(28px,5.5vw,58px);font-weight:900;line-height:1.18;letter-spacing:-1px;margin:0 auto 34px;overflow-wrap:anywhere;text-shadow:0 2px 1px #53616d}
-.pill{display:flex;justify-content:center;align-items:center;gap:17px;width:max-content;max-width:100%;margin:0 auto 33px;border-radius:100px;padding:20px 28px}
-.subscribers{color:#09b9ff;background:#052e45;border:1px solid #00658c;font-size:clamp(20px,3.8vw,36px);box-shadow:inset 0 0 14px rgba(0,174,255,.07)}
-.dot{width:21px;height:21px;border-radius:50%;background:#08baff;box-shadow:0 0 12px #00b9ff;flex-shrink:0}
-.joined{color:#ffa000;background:#242824;border:2px solid #956100;font-size:clamp(17px,3.6vw,34px);font-weight:800;margin-bottom:40px}
-.flame{font-size:34px}
-.features{padding:32px 38px;background:linear-gradient(115deg,#06283b,#05263a);border:1px solid rgba(0,119,165,.42);border-radius:38px;margin-bottom:42px;text-align:left}
-.feature{display:flex;align-items:center;gap:27px;margin:9px 0 28px;color:#e0e6f4;font-size:clamp(19px,3.8vw,34px);line-height:1.45}
-.feature:last-child{margin-bottom:5px}
-.emoji{width:43px;flex:0 0 43px;text-align:center;font-size:32px}
-.join-btn{display:flex;align-items:center;justify-content:center;gap:22px;width:100%;min-height:135px;padding:22px 16px;margin:0 auto 40px;border:2px solid #18dcff;border-radius:39px;background:linear-gradient(110deg,#08aef0,#00baf0);color:white;text-decoration:none;font-size:clamp(19px,3.8vw,35px);font-weight:900;box-shadow:0 0 12px #00c7ff,0 0 36px rgba(0,194,255,.25);transition:transform .18s,filter .18s}
-.join-btn:hover{transform:scale(1.012);filter:brightness(1.08)}
-.telegram{display:grid;place-items:center;width:58px;height:58px;flex:0 0 58px;border-radius:50%;background:white;color:#08aee7;font-size:30px}
-.disclaimer{padding:30px 38px 32px;border:2px solid var(--pink);border-radius:28px;background:linear-gradient(130deg,#171d31,#101b2e);text-align:left;margin-bottom:31px}
-.disclaimer h2{display:flex;align-items:center;gap:18px;color:var(--pink);font-size:clamp(22px,3.9vw,35px);margin:0 0 16px}
-.disclaimer p{margin:0;color:#c3cbe2;font-size:clamp(16px,2.9vw,27px);line-height:1.48}
-.secure{display:flex;justify-content:center;align-items:center;gap:14px;color:#d2d9ec;font-size:clamp(17px,3.2vw,27px);padding-bottom:4px}
-.lock{font-size:32px;color:#ffd000}
-@media(max-width:520px){
- .page{padding:42px 5.5% 30px}
- .logo-wrap{margin-bottom:38px}
- .logo-ring{border-width:6px}
- .verified{width:49px;height:49px;font-size:25px;bottom:8px}
- h1{letter-spacing:-.5px;margin-bottom:30px}
- .pill{padding:16px 19px;gap:13px;margin-bottom:28px}
- .dot{width:17px;height:17px}
- .joined{margin-bottom:34px}
- .features{padding:25px 20px;border-radius:34px;margin-bottom:37px}
- .feature{gap:15px;margin-bottom:22px}
- .emoji{width:32px;flex-basis:32px;font-size:28px}
- .join-btn{min-height:110px;border-radius:32px;gap:13px;margin-bottom:35px}
- .telegram{width:44px;height:44px;flex-basis:44px;font-size:25px}
- .disclaimer{padding:23px 23px 26px;border-radius:25px}
- .disclaimer h2{gap:13px;margin-bottom:13px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙂𝙐𝙍𝙐 𝘽𝙃𝘼𝙄 𝙎𝘼𝙏𝙏𝘼 𝙆𝙄𝙉𝙂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Hind', sans-serif;
+            background-color: #071018;
+            color: #ffffff;
+        }
+        
+        /* Gold gradient ring for profile border */
+        .gold-border-ring {
+            background: linear-gradient(135deg, #fce080 0%, #ca9632 50%, #fef3ac 100%);
+            padding: 3px;
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.35);
+        }
+
+        /* Glowing effects for CTA Button */
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.55), 0 0 40px rgba(14, 165, 233, 0.25);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 28px rgba(14, 165, 233, 0.8), 0 0 50px rgba(14, 165, 233, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn-glow:active {
+            transform: translateY(1px);
+        }
+
+        /* Feature card custom background */
+        .feature-card {
+            background-color: #0d1f30;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Disclaimer card */
+        .disclaimer-card {
+            background-color: #121622;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+
+        /* Custom pulse animation for subscriber badge */
+        @keyframes custom-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.9); }
+        }
+        .animate-live-dot {
+            animation: custom-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
 </head>
-<body>
-<main class="page">
-  <div class="logo-wrap">
-    <div class="logo-ring"></div>
-    <img class="logo" src="https://raw.githubusercontent.com/DillubhaiMatka/GURU-BHAI-/refs/heads/main/IMG-20261012-WA0064.jpg" alt="Guru Bhai Satta King logo">
-    <span class="verified" aria-label="Verified">✓</span>
-  </div>
-  <h1>𝙂𝙐𝙍𝙐 𝘽𝙃𝘼𝙄 𝙎𝘼𝙏𝙏𝘼 𝙆𝙄𝙉𝙂</h1>
-  <div class="pill subscribers"><span class="dot"></span><span>200,000 subscribers</span></div>
-  <div class="pill joined"><span class="flame">♨</span><span>18,432 logon ne abhi join kiya</span></div>
-  <section class="features">
-    <div class="feature"><span class="emoji">🔥</span><span>फरीदाबाद से दिसावर</span></div>
-    <div class="feature"><span class="emoji">🎯</span><span>रोजाना 4 में से 3 लोकेशन पास</span></div>
-    <div class="feature"><span class="emoji">⭐</span><span>महीने में 26/27 दिन पासिंग का वादा</span></div>
-  </section>
-  <a class="join-btn" href="https://t.me/+xGVqLSKhk9AyMWZl" target="_blank" rel="noopener noreferrer">
-    <span class="telegram">➤</span><span>JOIN TELEGRAM CHANNEL</span>
-  </a>
-  <section class="disclaimer">
-    <h2><span>⚠</span><span>Disclaimer</span></h2>
-    <p>All content shared on this channel is purely for educational and informational purposes. Trading in stocks and derivatives involves risk. Please consult a SEBI-registered financial advisor before making investment decisions.</p>
-  </section>
-  <div class="secure"><span class="lock">🔒</span><span>100% Free &amp; Secure Channel Access</span></div>
-</main>
+<body class="min-h-screen flex flex-col justify-center items-center p-4 antialiased">
+
+    <main class="w-full max-w-md mx-auto flex flex-col items-center pt-6 pb-10 px-2 space-y-6">
+
+        <div class="relative mb-1">
+            <div class="w-32 h-32 md:w-36 md:h-36 rounded-full gold-border-ring flex items-center justify-center relative overflow-hidden">
+                <img 
+                    src="https://raw.githubusercontent.com/DillubhaiMatka/GURU-BHAI-/refs/heads/main/IMG-20261012-WA0064.jpg" 
+                    alt="GURU BHAI SATTA KING" 
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="this.onerror=null; this.src='https://placehold.co/150x150/0b1928/fce080?text=GURU+BHAI';"
+                />
+            </div>
+            <!-- Verified Blue Check Badge -->
+            <div class="absolute bottom-1 right-2 bg-sky-500 text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-[#071018] shadow-md">
+                <i class="fas fa-check text-xs"></i>
+            </div>
+        </div>
+
+        <h1 class="text-2xl md:text-3xl font-extrabold text-center text-white tracking-wide leading-tight px-2">
+            𝙂𝙐𝙍𝙐 𝘽𝙃𝘼𝙄 𝙎𝘼𝙏𝙏𝘼 𝙆𝙄𝙉𝙂
+        </h1>
+
+        <div class="bg-[#0e2338] px-5 py-2 rounded-full flex items-center space-x-2 text-sky-400 font-medium text-sm border border-sky-900/30">
+            <span class="w-2.5 h-2.5 bg-sky-400 rounded-full animate-live-dot"></span>
+            <span>200,000 subscribers</span>
+        </div>
+
+        <div class="bg-[#121c27] border border-amber-500/80 px-5 py-2.5 rounded-full flex items-center space-x-2 text-amber-500 text-sm font-semibold tracking-wide shadow-sm">
+            <span class="text-base">🔥</span>
+            <span>18,432 logon ne abhi join kiya</span>
+        </div>
+
+        <div class="w-full feature-card rounded-2xl p-5 md:p-6 space-y-4 shadow-xl">
+            <div class="flex items-center space-x-3.5">
+                <span class="text-lg flex-shrink-0">🔥</span>
+                <span class="text-gray-100 font-medium text-base md:text-lg">फरीदाबाद से दिसावर</span>
+            </div>
+            <div class="flex items-center space-x-3.5">
+                <span class="text-lg flex-shrink-0">🎯</span>
+                <span class="text-gray-100 font-medium text-base md:text-lg">रोजाना 4 में से 3 लोकेशन पास</span>
+            </div>
+            <div class="flex items-center space-x-3.5">
+                <span class="text-lg flex-shrink-0">⭐</span>
+                <span class="text-gray-100 font-medium text-base md:text-lg">महीने में 26/27 दिन पासिंग का वादा</span>
+            </div>
+        </div>
+
+        <a 
+            href="https://t.me/+xGVqLSKhk9AyMWZl" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="w-full bg-[#00a8e8] hover:bg-[#0096d1] text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 btn-glow text-base md:text-lg tracking-wider uppercase transition-all duration-200 mt-2"
+        >
+            <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fab fa-telegram-plane text-[#00a8e8] text-base ml-0.5"></i>
+            </div>
+            <span>JOIN TELEGRAM CHANNEL</span>
+        </a>
+
+        <div class="w-full disclaimer-card rounded-2xl p-4 md:p-5 space-y-2 mt-2">
+            <div class="flex items-center space-x-2 text-red-500 font-bold text-base">
+                <span>⚠️</span>
+                <span>Disclaimer</span>
+            </div>
+            <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+                All content shared on this channel is purely for educational and informational purposes. Trading in stocks and derivatives involves risk. Please consult a SEBI-registered financial advisor before making investment decisions.
+            </p>
+        </div>
+
+        <div class="flex items-center space-x-2 text-gray-400 text-xs md:text-sm pt-2">
+            <span>🔒</span>
+            <span class="font-medium">100% Free & Secure Channel Access</span>
+        </div>
+
+    </main>
+
 </body>
 </html>
-'''
-html_path = folder / "index.html"
-html_path.write_text(html, encoding="utf-8")
-zip_path = Path("/mnt/data/Guru_Bhai_Same_To_Same_HTML_Code.zip")
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-    z.write(html_path, arcname="index.html")
-print("HTML:", html_path)
-print("ZIP:", zip_path)
